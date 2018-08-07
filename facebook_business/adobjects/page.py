@@ -295,6 +295,17 @@ class Page(
     @classmethod
     def get_endpoint(cls):
         return 'owned_pages'
+    
+    def get_leadgen_forms(self, fields=None, params=None):
+        """
+        Returns all leadgen forms on the page
+        """
+        return self.iterate_edge(
+        LeadgenForm,
+        fields,
+        params,
+        endpoint='leadgen_forms',
+        )
 
     def api_create(self, parent_id, fields=None, params=None, batch=None, pending=False):
         from facebook_business.adobjects.business import Business
